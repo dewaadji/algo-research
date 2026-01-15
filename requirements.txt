@@ -1,0 +1,14 @@
+pandas
+numpy
+requests
+backtesting
+TA-Lib
+ccxt
+eth-account
+pandas-ta
+schedule
+pytz
+python-dotenv
+termcolor
+colorama
+hyperliquid-python-sdk

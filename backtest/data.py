@@ -16,7 +16,7 @@ import os
 
 # Define symbol and timeframe
 symbol = 'BTC'
-timeframe = '1d'
+timeframe = '1h'
 
 
 # Constants
@@ -175,7 +175,7 @@ all_data = fetch_historical_data(symbol, timeframe)
 if not all_data.empty:
     timestamp = datetime.utcnow().strftime('%Y%m%d_%H%M%S')
     # Updated path to save directly to the existing folder
-    file_path = f'/Users/md/Dropbox/dev/github/Harvard-Algorithmic-Trading-with-AI-/backtest/data/{symbol}_{timeframe}_{timestamp}_historical.csv'
+    file_path = f'/Users/adjiitungin/Documents/Aji belajar/trade-rsch/backtest/data/{symbol}_{timeframe}_{timestamp}_historical.csv'
     all_data.to_csv(file_path, index=False)
     print(f'\n💾 MoonDev says: Data saved to {file_path} 🚀')
 else:

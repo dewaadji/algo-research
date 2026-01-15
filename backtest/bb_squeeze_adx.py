@@ -3,10 +3,11 @@ import numpy as np
 import talib
 from backtesting import Backtest, Strategy
 from backtesting.lib import crossover
-
+import warnings
+warnings.filterwarnings("ignore")
 # Load the filtered data
-data_path = '/Users/md/Dropbox/dev/github/Harvard-Algorithmic-Trading-with-AI-/backtest/data/BTC-6h-1000wks-data.csv'
-data = pd.read_csv(data_path, parse_dates=['datetime'], index_col='datetime')
+data_path = '/Users/adjiitungin/Documents/Aji belajar/trade-rsch/backtest/data/BTC_15m_20250418_133857_historical.csv'
+data = pd.read_csv(data_path, parse_dates=['timestamp'], index_col='timestamp')
 
 # Bollinger Band Squeeze with ADX Strategy
 class BBSqueezeADX(Strategy):
@@ -84,13 +85,13 @@ data.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
 bt = Backtest(data, BBSqueezeADX, cash=100000, commission=0.002) # .001 
 
 # Run the backtest with default parameters and print the results
-print("🌟 MOON DEV BACKTEST STARTING - Default Parameters 🌟")
+print("🌟 BACKTEST STARTING - Default Parameters 🌟")
 stats_default = bt.run()
-print("\n📊 MOON DEV DEFAULT PARAMETERS RESULTS:")
+print("\n📊 DEFAULT PARAMETERS RESULTS:")
 print(stats_default)
 
 # Now perform the optimization
-print("\n🔍 MOON DEV OPTIMIZATION STARTING - This may take a while... 🔍")
+print("\n🔍 OPTIMIZATION STARTING - This may take a while... 🔍")
 optimization_results = bt.optimize(
     bb_window=range(10, 15, 5),
     bb_std=[round(i, 1) for i in np.arange(1.5, 2.1, 0.5)],
@@ -105,11 +106,11 @@ optimization_results = bt.optimize(
 )
 
 # Print the optimization results
-print("\n🏆 MOON DEV OPTIMIZATION COMPLETE - Results:")
+print("\n🏆 OPTIMIZATION COMPLETE - Results:")
 print(optimization_results)
 
 # Print the best optimized values
-print("\n✨ MOON DEV BEST PARAMETERS:")
+print("\n✨ BEST PARAMETERS:")
 print(f"BB Window: {optimization_results._strategy.bb_window}")
 print(f"BB Standard Deviations: {optimization_results._strategy.bb_std}")
 print(f"Keltner Window: {optimization_results._strategy.keltner_window}")

@@ -3,6 +3,8 @@ import numpy as np
 import talib
 from backtesting import Backtest, Strategy
 from backtesting.lib import crossover
+import warnings
+warnings.filterwarnings("ignore")
 
 # Load the filtered data
 data_path = '/Users/md/Dropbox/dev/github/Harvard-Algorithmic-Trading-with-AI-/backtest/data/BTC-6h-1000wks-data.csv'
